@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+</head>
+<body>
+    <!--vue-dom-->
+    <div id="app">
+        {{message}}
+    </div>
+    <!--vue-cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--vue-js-->
+    <script>
+        //通过构造函数创建Vue对象
+        var app = new Vue({
+            //设置Vue对象属性 el,data
+            el:"#app", //el：选择器
+            data:{
+                message:"hello vue!"
+            }
+
+        })
+    </script>
+</body>
+</html>
+
+<!--
+    1.先导入vue-cdn
+    2.编写vue-dom
+    3.编写vue-js
+->

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>图片切换</title>
+    <link rel="stylesheet" href="./css/图片切换.css" />
+</head>
+
+<body>
+<div id="mask">
+    <div class="center">
+        <h2 class="title">
+            Vue版的轮播
+        </h2>
+        <!-- 图片 -->
+        <img :src="'https://game.gtimg.cn/images/lol/act/img/skin/'+arrImg[index]" alt="" />
+        <!-- 左箭头 -->
+        <a v-show="index!=0" @click="prev" href="javascript:void(0)"  class="left">
+            <img src="./img/prev.png" alt="" />
+        </a>
+        <!-- 右箭头 -->
+        <a v-show="index<arrImg.length-1" @click="next" href="javascript:void(0)" class="right">
+            <img src="./img/next.png" alt="" />
+        </a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    <!-- game.gtimg.cn/images/lol/act/img/skin/ -->
+    var app = new Vue({
+        el:"#mask",
+        data:{
+            arrImg:[
+                "big92000.jpg",
+                "big92001.jpg",
+                "big92002.jpg",
+                "big92003.jpg",
+                "big92004.jpg",
+                "big92005.jpg",
+                "big92006.jpg",
+                "big92007.jpg",
+                "big92016.jpg",
+                "big92018.jpg",
+                "big92020.jpg",
+                "big92022.jpg"
+            ],
+            index:0,
+        },
+        methods:{
+            prev:function () {
+                this.index--;
+
+            },
+            next:function () {
+                this.index++;
+
+            }
+        }
+
+    })
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>data数据对象</title>
+</head>
+<body>
+    <!--vue-dom-->
+    <div id="app" class="app">
+        {{message}}
+        <h2>名字:{{school.name}}电话:{{school.mobile}}</h2>
+        <ul>
+            <il>{{campus[0]}}</il>
+            <il>{{campus[2]}}</il>
+        </ul>
+    </div>
+    <!--vue-cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--vue-js-->
+    <script>
+        //通过构造函数创建Vue对象
+        var app = new Vue({
+            //设置Vue对象属性 el,data
+            el:".app", //el：选择器
+            data:{
+                message:"hello vue!",
+                school:{
+                    name:"Vue程序员",
+                    mobile:"400-123-3030"
+                },
+                campus:["北京校区","上海校区","广东校区","深圳校区"]
+            }
+
+        })
+    </script>
+</body>
+</html>
+<!--
+   1.Vue中用到的数据定义在data中
+   2.data中可以写复杂对象的数据
+   3.渲染复炸类型数据时，遵守js的语法即可
+->

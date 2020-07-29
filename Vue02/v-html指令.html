@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-html指令</title>
+</head>
+<body>
+    <!--2.html 结构    -->
+    <div id="app">
+        <p v-html="content"></p>
+        <p v-text="content"></p>
+    </div>
+    <!--1.在线引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--3.编写 Vue代码-->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                //content:vue程序员
+                content:"<a href='https://cn.vuejs.org/'>Vue官网</a>"
+            }
+
+        })
+    </script>
+</body>
+</html>
+<!--
+    v-html指令
+        1.设置元素的innerHTML
+        2.内容中有html结构会被解析为标签
+        3.v-text指令无论内容是什么,只会解析文本
+        4.解析文本使用v-text,需要解析html结构使用v-html
+
+-->

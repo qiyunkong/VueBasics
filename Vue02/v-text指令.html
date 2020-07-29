@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text指令</title>
+</head>
+<body>
+    <!--vue-dom-->
+    <div id="app">
+        <h2 v-text="message+'!'">深圳</h2>
+        <h2 v-text="info+'!'">深圳</h2>
+        <h2 v-text="'你好'">深圳</h2>
+        <h2>{{message}}深圳</h2>
+    </div>
+    <!--vue-cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--vue-js-->
+    <script>
+        //通过构造函数创建Vue对象
+        var app = new Vue({
+            //设置Vue对象属性 el,data
+            el:"#app", //el：选择器
+            data:{
+              message:"Vue程序员！！！",
+              info:"前端程序员"
+            }
+
+        })
+    </script>
+</body>
+</html>
+<!--
+    v-text指令
+        1.设置元素文本(原生js的textContent类似)
+        2.支持变量
+        3.支持表达式
+        4.支持常量(需要加'')
+->

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>el挂载点</title>
+</head>
+<body id="body">
+    <!--vue-dom-->
+    <div id="app" class="app">
+        {{message}}
+        <span>{{message}}</span>
+    </div>
+    <!--vue-cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--vue-js-->
+    <script>
+        //通过构造函数创建Vue对象
+        var app = new Vue({
+            //设置Vue对象属性 el,data
+            el:".app", //el：选择器
+            data:{
+                message:"hello vue!"
+            }
+
+        })
+    </script>
+</body>
+</html>
+<!--
+    1.Vue 实例的作用范围是什么呢？
+        Vue会管理el选项命中的元素及内部的后代元素
+    2.是否可以使用其他选择器？
+        可以使用其他选择器，但是建议使用ID选择器
+    3.是否可以设置其他的dom元素
+        可以使用其他的双标签，不能使用HTML和Body
+->

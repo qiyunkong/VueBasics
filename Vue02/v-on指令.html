@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on指令</title>
+</head>
+<body>
+    <!--2.html 结构    -->
+    <div id="app">
+        <input type="button" value="v-on指令" v-on:click="doIt">
+        <input type="button" value="v-on简写(@)" @click="doIt">
+        <input type="button" value="双击事件" @dblclick="doIt">
+        <h2 @click="changeFood">{{food}}}</h2>
+    </div>
+    <!--1.在线引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--3.编写 Vue代码-->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                //content:vue程序员
+                food:"西兰花炒鸡蛋"
+            },
+            methods:{
+                doIt:function () {
+                    alert("做It");
+                },
+                changeFood:function () {
+                    //console.log(this.food)
+                    this.food +="好好吃!"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+<!--
+    v-on指令
+        1.设置元素的事件
+        2.v-on可以简写为@
+        3.
+
+-->

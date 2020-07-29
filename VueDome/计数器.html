@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/计算器.css">
+</head>
+<body>
+    <!--html 结构-->
+    <div id="app">
+        <!--计数器功能区域-->
+        <div class="input-sum">
+            <button @click="sub">
+                -
+            </button>
+            <span>{{num}}</span>
+            <button @click="add">
+                +
+            </button>
+        </div>
+    </div>
+    <!--1.在线引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--3.编写 Vue代码-->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:1,
+            },
+            methods:{
+                add:function () {
+                    if(this.num<10){
+                        this.num++;
+
+                    }else{
+                        alert("最大值是10")
+                    }
+                },
+                sub:function () {
+                    if(this.num>0){
+                        this.num--;
+
+                    }else{
+                        alert("最小值是0")
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+<!--
+   创建Vue示例：el(挂载点)，data(数据)，methods(方法)
+   v-on指令的作用是绑定事件，简写为@
+   方法中通过this,关键字获取data中的数据
+   v-text指令的作用是：设置元素的文本值，简写为{{}}
+-->
