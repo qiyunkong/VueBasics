@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>天知道</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/天气预报.css" />
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap" id="app" v-cloak>
+    <div class="search_form">
+        <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+        <div class="form_group">
+            <input
+                    type="text"
+                    v-model="inputValue"
+                    @keydown.enter="searchCity()"
+                    class="input_txt"
+                    placeholder="请输入查询的天气"
+            />
+            <button @click="searchCity()" class="input_sub">
+                搜 索
+            </button>
+        </div>
+        <div class="hotkey">
+            <a v-for=" item in cityList" @click="searchCity(item)" href="javascript:;">{{item}}</a>
+        </div>
+    </div>
+    <ul class="weather_list">
+        <li v-for="item in weatherList">
+            <div class="info_type"><span class="iconfont">{{item.type}}</span></div>
+            <div class="info_temp">
+                <b>{{item.high}}</b>
+                ~
+                <b>{{item.low}}</b>
+            </div>
+            <div class="info_date"><span>{{item.date}}</span></div>
+        </li>
+    </ul>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 官网提供的 axios 在线地址 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- 自己的js -->
+<script>
+    /*
+      请求地址:http://wthrcdn.etouch.cn/weather_mini
+      请求方法:get
+      请求参数:city(城市名)
+      响应内容:天气信息
+
+      1. 点击回车
+      2. 查询数据
+      3. 渲染数据
+    */
+    var app = new Vue({
+        el:'#app',
+        data:{
+          inputValue:'',
+          cityList:['北京','上海','广州','深圳'],
+          weatherList:[]
+        },
+        methods:{
+            searchCity:function (city) {
+                //this 是Vue对象
+                console.log(this);
+                city = this.inputValue||city||"北京";
+                let that = this;
+                axios.get("http://wthrcdn.etouch.cn/weather_mini?city="+city).then(function ({data}) {
+                    //this 是window对象
+                    console.log(this)
+                    let {forecast} =  data.data;
+                    console.log(forecast);
+                    that.weatherList = forecast;
+                },function (error) {
+                    console.log(error);
+                })
+
+
+            }
+
+        }
+
+    })
+
+</script>
+</body>
+</html>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>图片切换</title>
-    <link rel="stylesheet" href="./css/图片切换.css" />
+    <link rel="stylesheet" href="css/图片切换.css" />
 </head>
 
 <body>
@@ -20,11 +20,11 @@
         <img :src="'https://game.gtimg.cn/images/lol/act/img/skin/'+arrImg[index]" alt="" />
         <!-- 左箭头 -->
         <a v-show="index!=0" @click="prev" href="javascript:void(0)"  class="left">
-            <img src="./img/prev.png" alt="" />
+            <img src="img/prev.png" alt="" />
         </a>
         <!-- 右箭头 -->
         <a v-show="index<arrImg.length-1" @click="next" href="javascript:void(0)" class="right">
-            <img src="./img/next.png" alt="" />
+            <img src="img/next.png" alt="" />
         </a>
     </div>
 </div>
