@@ -18,7 +18,11 @@
             <!-- 搜索歌曲列表 -->
             <div class='song_wrapper'>
                 <ul class="song_list">
-                    <li v-for="item in musicList"><a @click="playMusic(item.id)" href="javascript:;"></a> <b>{{item.name}}</b> <span @click="playMV(item.mvid)" v-if="item.mvvid!=0"><i></i></span></li>
+                    <li v-for="item in musicList">
+                        <a @click="playMusic(item.id)" href="javascript:;"></a>
+                        <b>{{item.name}}</b>
+                        <span @click="playMV(item.mvid)" v-if="item.mvid!=0"><i></i></span>
+                    </li>
                 </ul>
                 <img src="img/line.png" class="switch_btn" alt="">
             </div>
@@ -48,7 +52,7 @@
             <audio ref='audio' @play="play" @pause="pause"  :src="musicUrl" controls autoplay loop class="myaudio"></audio>
         </div>
         <div class="video_con"  v-show="isShow" style="display: none;">
-            <video ref="video"  @pause="pauseMV" :src="mvUrl" controls="controls"></video>
+            <video ref='video'  :src="mvUrl" controls="controls"></video>
             <div @click="hide" class="mask" ></div>
         </div>
     </div>

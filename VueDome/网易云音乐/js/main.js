@@ -46,6 +46,7 @@ var app = new Vue({
                 let {songs} = data.result;
                 that.musicList = songs;
                 console.log(songs);
+                this.query = "";
             },function (error) {
                 console.log(error)
             })
@@ -94,14 +95,11 @@ var app = new Vue({
                 let {url} = data.data;
                 that.mvUrl = url;
                 that.isShow = true;
-                this.isPlaying = false;
-                this.$refs.audio.pause();
+                that.isPlaying = false;
+                that.$refs.audio.pause();
             },function (error) {
                 console.log(error)
             })
-        },
-        pauseMV:function(){
-            return true
         },
         //隐藏MV
         hide:function () {
