@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on补充</title>
+</head>
+<body>
+    <!--2.html 结构    -->
+    <div id="app">
+        <input type="button" value="点击" @click="doIt(666,'老铁')">
+        <input type="text" @keyup.enter="saHi">
+    </div>
+    <!--1.在线引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--3.编写 Vue代码-->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            methods:{
+                doIt:function (p1,p2) {
+                    console.log("做it");
+                    console.log(p1);
+                    console.log(p2);
+                },
+                saHi:function () {
+                  alert("吃了吗？")
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
+
+<!--
+    事件绑定的方法写成函数调用的形式，可以传入自定义参数
+    定义方法时需要定义形参来接收传入的实参
+    事件的后面跟上.修饰符可以事件进行限制
+    .enter可以限制触发的按键为回车
+-->
