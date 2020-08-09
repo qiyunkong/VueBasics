@@ -1,0 +1,94 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>天天背单词</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+
+<body>
+
+
+<div id="root">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <!-- 主体区域 -->
+                <section id="todoapp">
+                    <!-- 输入框 -->
+                    <header class="header">
+                        <h1>记事本</h1>
+                        <input
+                                autofocus="autofocus"
+                                autocomplete="off"
+                                placeholder="请输入任务"
+                                class="new-todo"
+                                v-model="inputValue"
+                                @keydown.enter="add"
+                        />
+                    </header>
+                    <!-- 列表区域 -->
+                    <section class="main">
+                        <ul class="todo-list">
+                            <li class="todo" v-for="(item,index) in list">
+                                <div class="view">
+                                    <span class="index">{{index+1}}.</span> <label>{{item}}</label>
+                                    <button class="destroy" @click="remove(index)"></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <!-- 统计和清空 -->
+                    <footer class="footer" v-show="this.list.length!=0">
+                        <span class="todo-count"> <strong v-text="this.list.length"></strong> items left </span>
+                        <button @click="removeAll" class="clear-completed">
+                            Clear
+                        </button>
+                    </footer>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                1
+            </div>
+            <div class="swiper-slide">
+                2
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el:"#root",
+        data:{
+            list:["写代码","吃饭饭","睡觉"],
+            inputValue:"好好学习，天天上上"
+        },
+        methods:{
+            add:function () {
+                this.list.push(this.inputValue);
+                this.inputValue = "";
+            },
+            remove(index){
+                console.log("删除");
+                console.log(index);
+                this.list.splice(index,1);
+            },
+            removeAll(){
+                this.inputValue = "";
+                this.list = [];
+            }
+
+        }
+    })
+
+</script>
+<!--swiper-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script src="./js/swiperconfig.js"></script>
+</body>
+</html>
