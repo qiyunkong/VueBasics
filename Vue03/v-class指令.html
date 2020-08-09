@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-class指令</title>
+    <style>
+        .active{
+            border:1px solid red;
+        }
+
+        /*背景色*/
+        .red{
+            background-color:red;
+        }
+        .black{
+            background-color: black;
+            color: #fff;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<!--2.html 结构 -->
+<div id="app">
+    <h2 class="active">原生的class</h2>
+    <h2 :class="isActive?'active':''">第一种写法 :class 三目写法</h2>
+    <h2 :class="{active:isActive}">第二种写法 :class 对象写法</h2>
+    <h2 :class="vueClass">第三种写法 :class 对象写法</h2>
+    <button @click="toggleActive">点击切换isActive值 当前值为isActive:{{isActive}}</button>
+</div>
+<!--1.在线引入vue.js文件 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--3.编写 Vue代码-->
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            isActive:false,
+            vueClass:{
+                red:true,
+                black:true,
+                blue:true,
+            }
+        },
+        methods:{
+            toggleActive:function () {
+                this.isActive =!this.isActive;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
