@@ -14,6 +14,7 @@
     <div id="app">
         <img v-bind:src="imgSrc" alt="" :title="imgTitle+'!!!'">
         <br>
+        <!--class-->
         <img v-bind:src="imgSrc" alt="" :title="imgTitle" @click="toggleActive"  :class="isActive?'active':''">
         <br>
         <img v-bind:src="imgSrc" alt="" :title="imgTitle" @click="toggleActive" :class="{active:isActive}">
