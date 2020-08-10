@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-else指令</title>
+</head>
+<body>
+<!--2.html 结构 -->
+<div id="app">
+    <h2>购物车列表</h2>
+    <div v-if="arrList.length">
+        <ul>
+            <li v-for="item in arrList">{{item}}</li>
+        </ul>
+    </div>
+    <div v-else>
+        你就是个穷光蛋，
+    </div>
+    <input type="button" value="添加商品" @click="addGoods">
+
+    <h2>v-if-else多支分支</h2>
+    <div v-if="which===1">{{which}}</div>
+    <div v-else-if="which===2">{{which}}</div>
+    <div v-else></div>
+
+</div>
+<!--1.在线引入vue.js文件 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--3.编写 Vue代码-->
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            which:1,
+            temperature:40,
+            arrList:[],
+        },
+        methods:{
+            addGoods:function () {
+                this.arrList = ['火腿肠','面包','牛奶'];
+            },
+
+        }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>key值属性</title>
+</head>
+<body>
+<!--2.html 结构    -->
+<div id="app">
+    <h2>设置key的作用</h2>
+    <input type="button" value="添加一个对象" @click="add">
+    <input type="button" value="删除一个对象" @click="remove">
+    <h3 v-for="(item,index) in vueObj" key="index">{{index}}---{{item.name}}</h3>
+</div>
+
+<!--1.在线引入vue.js文件 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--3.编写 Vue代码-->
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            vueObj:[
+                {name:"西兰花炒蛋"},
+                {name:"西红柿炒蛋"},
+                {name:"番茄炒蛋"},
+            ],
+        },
+        methods:{
+            add:function () {
+                this.vueObj.push({name:"花菜炒蛋"})
+            },
+            remove:function () {
+                this.vueObj.shift()
+            },
+
+        }
+    })
+</script>
+</body>
+</html>
+<!--
+   v-for指令
+    根据数据生成列表结构
+    数据经常和v-for结合使用
+    语法是(item,index) in 数据
+    item 和 index 可以结合其他指令一起使用
+    数组长度的更新会同步到页面上，是响应式的
+
+-->

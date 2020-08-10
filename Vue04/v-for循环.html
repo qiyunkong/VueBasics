@@ -7,15 +7,20 @@
 <body>
 <!--2.html 结构    -->
 <div id="app">
-    <input type="button" value="添加一个" @click="add">
-    <input type="button" value="删除一个" @click="remove">
+    <h2>数组渲染 item是值,index是下标</h2>
     <ul>
         <li v-for="(item,index) in arr">
             {{index+1}}Vue程序员城市：{{item}}
         </li>
     </ul>
-    <h2 v-for="item in vegetbales">{{item.name}}</h2>
+    <h2>数组对象渲染 item是值,index是下标</h2>
+    <input type="button" value="添加一个对象" @click="add">
+    <input type="button" value="删除一个对象" @click="remove">
+    <h3 v-for="(item,index) in vegetbales">{{index}}---{{item.name}}</h3>
+    <h2>对象渲染 item是值，key是属性名称</h2>
+    <h3 v-for="(item,key) in objYun">对象属性名称：{{key}}---{{item}}</h3>
 </div>
+
 <!--1.在线引入vue.js文件 -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!--3.编写 Vue代码-->
@@ -27,7 +32,13 @@
            vegetbales:[
                {name:"西兰花炒蛋"},
                {name:"西红柿炒蛋"},
-           ]
+           ],
+            objYun:{
+               name:"云空",
+               age:20,
+               sex:"男",
+
+            }
         },
         methods:{
             add:function () {
@@ -48,5 +59,23 @@
     语法是(item,index) in 数据
     item 和 index 可以结合其他指令一起使用
     数组长度的更新会同步到页面上，是响应式的
+
+  注意：
+  (1)v-for (特殊 v-for="n in 10")
+    a. in
+    b. of
+    (2)key：
+    *跟踪每个节点的身份，从而重用和重新排序现有元素
+    *理想的 key 值是每项都有的且唯一的 id。data.id
+  (3)数组更新检测
+    a. 使用以下方法操作数组，可以检测变动（原因：VUE作者是把这数组方法,在原型上进行了重写,所以可以检查到变动）
+        push() pop() shift() unshift() splice() sort() reverse()
+    b. 使用以下方法操作数组，不会修改数组本身
+        filter(), concat() 和 slice() ,map(),新数组替换旧数组
+    c. 不能检测以下变动的数组,索引值的修改无法让vue进行视图数据的更新。(原因:通过索引比较底层)
+        vm.items[indexOfItem] = newValue
+    *解决* (1)Vue.set(example1.items, indexOfItem, newValue)   //vue作者自己封装了一个的方法 专门
+          (2)splice
+
 
 -->

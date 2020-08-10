@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤应用</title>
+</head>
+<body>
+    <!--2.html 结构    -->
+    <div id="app">
+        <input type="text" @input="handleInput" v-model="textInput"/>
+        <ul>
+            <li v-for="item in arrList">{{item}}</li>
+        </ul>
+    </div>
+
+    <!--1.在线引入vue.js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--3.编写 Vue代码-->
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                textInput:'',
+                arrList:["aaa","add","ccc","ddd","bbb","eee","cee"],
+                list:["aaa","add","ccc","ddd","bbb","eee","cee"]
+
+            },
+            methods:{
+                handleInput:function () {
+                    //console.log("只要value改变就触发");
+                    //console.log(this.textInput);
+
+                    //原生的过滤方法 无法把原始数组的保存
+                    var newlist = this.list.filter(item=>item.indexOf(this.textInput)>-1)
+                    this.arrList = newlist;
+                }
+            }
+        })
+
+        // filter 过滤方法
+        var arr = [1,2,4,5,6]
+        var newArr = arr.filter(item=>{
+            return item>3
+        })
+        console.log(newArr)
+
+    </script>
+</body>
+</html>
+<!--
+
+
+
+-->
