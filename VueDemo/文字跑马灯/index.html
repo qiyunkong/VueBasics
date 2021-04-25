@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 文字跑马灯</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <input  type="button" value="跑马灯走起" @click="startMethod" />
+        <input  type="button" value="跑马灯结束" @click="stopMethod"/>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:'jsfei.cn,永远滴神',
+                intervalId:null
+            },
+            methods:{ //Vue方法
+                startMethod:function () {
+                    //定时必须只能开启一次
+                    if(this.intervalId  != null) return
+                    //每400ms重复操作
+                    this.intervalId = setInterval(()=>{
+                        var start = this.msg.substring(0,1) //从索引0开始截取字符串到索引1结束
+                        var end  = this.msg.substring(1) //从索引1开始截取字符串到length-1的结束
+                        this.msg = end + start; //把首位字符拼接到最后
+                    },400)
+                },
+                stopMethod:function () {
+                    //清除定时
+                    clearInterval(this.intervalId);
+                    this.intervalId = null
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
+<!--
+    substring（start,stop）
+
+-->
