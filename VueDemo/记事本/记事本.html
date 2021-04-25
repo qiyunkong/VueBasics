@@ -1,4 +1,4 @@
-<html lang="lang">
+<html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>记事本</title>
@@ -26,7 +26,7 @@
     <!-- 列表区域 -->
     <section class="main">
         <ul class="todo-list">
-            <li class="todo" v-for="(item,index) in list" :key="item">
+            <li class="todo" v-for="(item,index) in list">
                 <div class="view">
                     <span class="index">{{index+1}}.</span> <label>{{item}}</label>
                     <button class="destroy" @click="remove(index)"></button>
